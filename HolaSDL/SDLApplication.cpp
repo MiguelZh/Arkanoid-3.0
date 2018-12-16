@@ -30,7 +30,7 @@ void SDLApplication::handleEvents() {
 			exit = true;
 		}
 		else {
-			stateMachine->getCurrentState()->handleEvents(event);
+			//stateMachine->getCurrentState()->handleEvents(event);
 		}
 	}
 

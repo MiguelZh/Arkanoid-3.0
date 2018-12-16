@@ -3,7 +3,7 @@
 
 void GameStateMachine::pushState(GameState* state) {
 	stateStack.push(state);
-	currentState = stateStack.top;
+	currentState = stateStack.top();
 }
 void GameStateMachine::changeState(GameState* state) {
 	popState();
@@ -11,8 +11,8 @@ void GameStateMachine::changeState(GameState* state) {
 }
 void GameStateMachine::popState() {
 	if (!stateStack.empty()) {
-		delete stateStack.top;
-		stateStack.pop;
+		delete stateStack.top();
+		stateStack.pop();
 	}
 }
 GameState * GameStateMachine::getCurrentState() {
