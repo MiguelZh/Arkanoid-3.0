@@ -2,7 +2,7 @@
 
 
 void GameStateMachine::pushState(GameState* state) {
-	stateStack.push(state);
+	stateStack.push(state);// error de lectura
 	currentState = stateStack.top();
 }
 void GameStateMachine::changeState(GameState* state) {

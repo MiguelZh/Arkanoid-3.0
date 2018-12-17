@@ -3,7 +3,8 @@
 #include "checkML.h"
 #include "SDL.h" // Windows
 #include "SDL_image.h" // Windows
-
+class SDLApplication;
+typedef unsigned int uint;
 class GameObject {
 public:
 	~GameObject(){}

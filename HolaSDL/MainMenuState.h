@@ -1,5 +1,6 @@
 #pragma once
-class MainMenuState {
+#include "GameState.h"
+class MainMenuState: public GameState {
 protected:
 public:
 	MainMenuState();
