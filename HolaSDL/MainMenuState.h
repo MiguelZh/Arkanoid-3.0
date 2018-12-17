@@ -3,5 +3,5 @@ class MainMenuState {
 protected:
 public:
 	MainMenuState();
-	MainMenuState();
+	~MainMenuState();
 };

@@ -15,6 +15,7 @@ SDLApplication::SDLApplication() {
 	window = SDL_CreateWindow("Arkanoid", SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, winWidth, winHeight, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	stateMachine->pushState();
 }
 void SDLApplication::run() {
 	while (!exit) {
