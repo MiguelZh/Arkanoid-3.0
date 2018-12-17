@@ -30,13 +30,14 @@ void SDLApplication::handleEvents() {
 			exit = true;
 		}
 		else {
-			//stateMachine->getCurrentState()->handleEvents(event);
+			stateMachine->getCurrentState()->handleEvent(event);
 		}
 	}
 
 }
 void SDLApplication::update() {
 	//llamo al update de la maquina de estado, render currentState
+	stateMachine->getCurrentState()->update();
 }
 void SDLApplication::render() const {
 	if (window == nullptr || renderer == nullptr)
@@ -44,6 +45,7 @@ void SDLApplication::render() const {
 	else {
 		SDL_RenderClear(renderer);
 		//llamo al render de la maquina de estado, render currentState
+		stateMachine->getCurrentState()->render();
 		SDL_RenderPresent(renderer);
 	}
 }

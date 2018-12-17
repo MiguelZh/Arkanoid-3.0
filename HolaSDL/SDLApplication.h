@@ -3,6 +3,7 @@
 #include "SDL_image.h" // Windows
 #include "checkML.h"
 #include <iostream>
+#include "GameStateMachine.h"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ private:
 	const uint winWidth = 800;
 	const uint winHeight = 600;
 	bool exit = false;
+	GameStateMachine * stateMachine = nullptr;
 public:
 	SDLApplication();
 	~SDLApplication();
