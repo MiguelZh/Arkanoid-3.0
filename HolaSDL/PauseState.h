@@ -3,7 +3,8 @@
 class PauseState:public GameState
 {
 public:
-	PauseState();
+	PauseState(SDLApplication* app) :
+		GameState(app){}
 	~PauseState();
 
 private:

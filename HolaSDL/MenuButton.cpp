@@ -13,3 +13,17 @@ bool MenuButton::HandleEvent(SDL_Event& e) {
 MenuButton::~MenuButton() {
 
 }
+void MenuButton::handleEvents(SDL_Event event) {
+
+}
+void MenuButton::render() {
+	SDL_Rect destrect;
+	destrect.x = x;
+	destrect.y = y;
+	destrect.w = w;
+	destrect.h = h;
+	textura->render(destrect, SDL_FLIP_NONE);
+}
+void MenuButton::update() {
+
+}

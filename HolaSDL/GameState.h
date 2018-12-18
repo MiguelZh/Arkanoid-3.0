@@ -6,8 +6,10 @@ class SDLApplication;
 class GameState {
 protected:
 	list<GameObject*> gameObjects;
+	SDLApplication * app;
 public:
-	GameState();
+	GameState(SDLApplication * app):
+		app(app){}
 	~GameState();
 	virtual void update();
 	virtual void render();

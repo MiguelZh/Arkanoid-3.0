@@ -5,7 +5,8 @@ class PlayState :public GameState {
 protected:
 	list<GameObject*> gameObjects;
 public:
-	PlayState();
+	PlayState(SDLApplication * app):
+		GameState(app) {}
 	~PlayState();
 
 	void update();

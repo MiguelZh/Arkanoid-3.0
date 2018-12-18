@@ -1,27 +1,23 @@
 #include "GameState.h"
 
-GameState::GameState(){
-
-}
-
 GameState::~GameState() {
 
 }
 
 void GameState::render() {
 	for (list<GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end();) {
-		((*it++))->render();
+		(*it++)->render();
 	}
 }
 
 void GameState::update() {
 	for (list<GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end();) {
-		((*it++))->update();
+		(*it++)->update();
 	}
 }
 
 void GameState::handleEvent(SDL_Event event) {
 	for (list<GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end();) {
-		((*it++))->handleEvents(event);
+		(*it++)->handleEvents(event);
 	}
 }
