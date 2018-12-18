@@ -1,15 +1,15 @@
 #pragma once
 #include "GameState.h"
 #include <list>
+#include "MenuButton.h"
 class PlayState :public GameState {
 protected:
 	list<GameObject*> gameObjects;
 public:
-	PlayState(SDLApplication * app):
-		GameState(app) {}
+	PlayState(SDLApplication * app);
 	~PlayState();
 
 	void update();
 	void render();
-	void handleEvent(SDL_Event e);
+	void handleEvents(SDL_Event Event);
 };

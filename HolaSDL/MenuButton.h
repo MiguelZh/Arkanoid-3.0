@@ -11,6 +11,5 @@ public:
 	~MenuButton();
 	void update();
 	void render();
-	void handleEvents(SDL_Event event);
-	bool HandleEvent(SDL_Event& e);
+	bool handleEvents(SDL_Event& e);
 };

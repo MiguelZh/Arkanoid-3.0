@@ -16,8 +16,12 @@ void GameState::update() {
 	}
 }
 
-void GameState::handleEvent(SDL_Event event) {
-	for (list<GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end();) {
-		(*it++)->handleEvents(event);
+bool GameState::handleEvent(SDL_Event& event) {
+	bool handled = false;
+	auto it = gameObjects.begin();
+	while (it != gameObjects.end() && !handled) {
+		//rellenar
+			++it;
 	}
+	return handled;
 }

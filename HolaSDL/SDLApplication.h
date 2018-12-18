@@ -19,6 +19,7 @@ private:
 	const uint winHeight = 600;
 	bool exit = false;
 	GameStateMachine * stateMachine = nullptr;
+	MainMenuState * MenuInicio;
 public:
 	SDLApplication();
 	~SDLApplication();
@@ -27,5 +28,6 @@ public:
 	void handleEvents();
 	void update();
 	Texture * getTexture(int num);
+	GameStateMachine * getStateMachine();
 
 };

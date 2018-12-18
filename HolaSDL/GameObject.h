@@ -7,8 +7,9 @@ class SDLApplication;
 typedef unsigned int uint;
 class GameObject {
 public:
-	~GameObject(){}
+	GameObject();
+	~GameObject();
 	virtual void render() = 0;
 	virtual void update() = 0;
-	virtual void handleEvents(SDL_Event event) = 0;
+	virtual bool handleEvents(SDL_Event& event) = 0;
 };

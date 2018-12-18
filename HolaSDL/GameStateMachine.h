@@ -5,7 +5,7 @@
 #include <vector>
 using namespace std;
 class GameStateMachine {
-protected:
+protected:	
 	stack <GameState*> stateStack;
 	GameState * currentState = nullptr;
 public:

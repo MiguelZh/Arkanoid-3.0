@@ -15,8 +15,11 @@ SDLApplication::SDLApplication() {
 	window = SDL_CreateWindow("Arkanoid 3.0", SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, winWidth, winHeight, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	textures[menu] = new Texture(renderer);
-	textures[menu]->load(nombreMenus[0]);
+	cout << "empieza el juego";
+	for (int i = 0; i < 4; i++) {
+		textures[i] = new Texture(renderer);
+		textures[i]->load(nombreMenus[i]);
+	}
 	stateMachine = new GameStateMachine();
 	stateMachine->pushState(new MainMenuState(this));
 }
@@ -55,4 +58,7 @@ void SDLApplication::render() const {
 }
 Texture * SDLApplication::getTexture(int num) {
 	return textures[num];
+}
+GameStateMachine * SDLApplication::getStateMachine() {
+	return stateMachine;
 }
