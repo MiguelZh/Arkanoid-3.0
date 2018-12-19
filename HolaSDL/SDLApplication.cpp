@@ -6,6 +6,7 @@ SDLApplication::~SDLApplication() {
 
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
+	stateMachine = nullptr;
 
 	SDL_Quit();
 };
@@ -44,6 +45,7 @@ void SDLApplication::handleEvents() {
 }
 void SDLApplication::update() {
 	//llamo al update de la maquina de estado, render currentState
+	
 	stateMachine->getCurrentState()->update();
 }
 void SDLApplication::render() const {

@@ -13,6 +13,7 @@ void GameStateMachine::popState() {
 	if (!stateStack.empty()) {
 		delete stateStack.top();
 		stateStack.pop();
+		currentState = stateStack.top();
 	}
 }
 GameState * GameStateMachine::getCurrentState() {
