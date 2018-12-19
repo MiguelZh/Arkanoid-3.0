@@ -20,8 +20,13 @@ bool GameState::handleEvent(SDL_Event& event) {
 	bool handled = false;
 	auto it = gameObjects.begin();
 	while (it != gameObjects.end() && !handled) {
-		//rellenar
+
+		if ((*it)->handleEvents(event)) {
+			handled = true;
+		}
+		else {
 			++it;
+		}
 	}
 	return handled;
 }

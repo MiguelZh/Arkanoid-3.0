@@ -1,6 +1,5 @@
 #include "MenuButton.h"
 bool MenuButton::handleEvents(SDL_Event& e) {
-	cout << "pulsado";
 	if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) { // RATON IZQUIERDO
 		SDL_Point p = { e.button.x, e.button.y };
 		SDL_Rect r = { x, y, w, h };

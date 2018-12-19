@@ -5,6 +5,7 @@
 class PlayState :public GameState {
 protected:
 	list<GameObject*> gameObjects;
+	MenuButton * pauseButton;
 public:
 	PlayState(SDLApplication * app);
 	~PlayState();
@@ -12,4 +13,5 @@ public:
 	void update();
 	void render();
 	void handleEvents(SDL_Event Event);
+
 };
