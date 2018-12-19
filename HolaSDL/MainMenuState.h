@@ -9,7 +9,6 @@ public:
 	MainMenuState(SDLApplication * app);
 	~MainMenuState();
 	static void onHitPlayButton(SDLApplication * app);
-	void render();
 	void update();
 	void handleEvents(SDL_Event  Event);
 };
