@@ -4,12 +4,12 @@
 class PauseState:public GameState
 {
 protected:
-	MenuButton * pauseButton;
+	MenuButton * playButton;
+	MenuButton * menuBotton;
 public:
-	PauseState(SDLApplication* app) :
-		GameState(app){}
+	PauseState(SDLApplication* app);
 	~PauseState();
-	void render();
-	void update();
-	void handleEvent(SDL_Event Event);
+	static void onHitPlayButton(SDLApplication * app);
+	static void onHitMenuButton(SDLApplication * app);
+	bool handleEvent(SDL_Event& Event);
 };
