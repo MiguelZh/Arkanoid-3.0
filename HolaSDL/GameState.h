@@ -9,7 +9,7 @@ protected:
 	SDLApplication * app;
 public:
 	GameState(SDLApplication * app):
-		app(app){}
+		app(app) {}
 	~GameState();
 	virtual void update();
 	virtual void render();

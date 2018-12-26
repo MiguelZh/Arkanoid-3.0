@@ -3,11 +3,14 @@
 SDLApplication::~SDLApplication() {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
-
-	SDL_Window* window = nullptr;
-	SDL_Renderer* renderer = nullptr;
+	renderer = nullptr;
+	window = nullptr;
+	delete stateMachine;
 	stateMachine = nullptr;
-
+	for (int i = 0; i < NUM_TEXTURES; i++) {
+		delete textures[i];
+		textures[i] = nullptr;
+	}
 	SDL_Quit();
 };
 SDLApplication::SDLApplication() {
@@ -17,7 +20,7 @@ SDLApplication::SDLApplication() {
 		SDL_WINDOWPOS_CENTERED, winWidth, winHeight, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	cout << "empieza el juego";
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < NUM_TEXTURES; i++) {
 		textures[i] = new Texture(renderer);
 		textures[i]->load(nombreMenus[i]);
 	}

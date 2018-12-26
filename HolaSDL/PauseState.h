@@ -1,6 +1,9 @@
 #pragma once
 #include"GameState.h"
 #include "MenuButton.h"
+#include "PlayState.h"
+#include "checkML.h"
+#include <iostream>
 class PauseState:public GameState
 {
 protected:
@@ -9,7 +12,7 @@ protected:
 public:
 	PauseState(SDLApplication* app);
 	~PauseState();
-	static void onHitPlayButton(SDLApplication * app);
-	static void onHitMenuButton(SDLApplication * app);
-	bool handleEvent(SDL_Event & Event);
+	static void HitPlayButton(SDLApplication * app);
+	static void HitMenuButton(SDLApplication * app);
+	bool handleEvent(SDL_Event& event);
 };

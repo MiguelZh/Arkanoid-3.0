@@ -5,7 +5,8 @@ MainMenuState::MainMenuState(SDLApplication * app): GameState(app){
 	gameObjects.push_back(playButton);
 }
 MainMenuState::~MainMenuState() {
-
+	delete playButton;
+	playButton = nullptr;
 }
 void MainMenuState::onHitPlayButton(SDLApplication * app) {
 	cout << " playState";

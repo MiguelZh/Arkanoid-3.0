@@ -10,6 +10,7 @@ using namespace std;
 typedef unsigned int uint;
 class SDLApplication {
 private:
+	const int NUM_TEXTURES = 4; // SI AÑADES TEXTURAS AUMENTA ESTE NUMERO
 	const enum textureName {menu,play,pause,end};
 	string nombreMenus[4] = { "..\\images\\menu.png", "..\\images\\play.png", "..\\images\\pause.png","..\\images\\end.png", }; // nombre de las imagenes
 	SDL_Window* window = nullptr;
