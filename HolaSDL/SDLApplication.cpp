@@ -62,7 +62,7 @@ void SDLApplication::render() const {
 	}
 }
 Texture * SDLApplication::getTexture(int num) {
-	return textures[num];
+	return textures[num]; // 0 al 3 botones y 3 al 9 del game
 }
 GameStateMachine * SDLApplication::getStateMachine() {
 	return stateMachine;

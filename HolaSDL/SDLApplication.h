@@ -10,9 +10,10 @@ using namespace std;
 typedef unsigned int uint;
 class SDLApplication {
 private:
-	const int NUM_TEXTURES = 4; // SI AÑADES TEXTURAS AUMENTA ESTE NUMERO
-	const enum textureName {menu,play,pause,end};
-	string nombreMenus[4] = { "..\\images\\menu.png", "..\\images\\play.png", "..\\images\\pause.png","..\\images\\end.png", }; // nombre de las imagenes
+	const int NUM_TEXTURES = 10; // SI AÑADES TEXTURAS AUMENTA ESTE NUMERO
+	const enum textureName {menu,play,pause,end,ballText,paddleText,bricksText,topsideText,sideText,rewardsText};
+	string nombreMenus[12] = { "..\\images\\menu.png", "..\\images\\play.png", "..\\images\\pause.png","..\\images\\end.png", // menuButtons
+	"..\\images\\ball.png","..\\images\\paddle.png","..\\images\\bricks.png","..\\images\\topside.png","..\\images\\side.png","..\\images\\rewards.png",}; // gameTextures
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
 	Texture * textures[4];
