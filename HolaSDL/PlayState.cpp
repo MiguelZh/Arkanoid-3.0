@@ -20,3 +20,17 @@ bool PlayState:: handleEvent(SDL_Event& event){
 	else { GameState::handleEvent(event); }
 	return true;
 }
+void PlayState::masVida() {
+	cout << " Ganaste una vida";
+	vidas++;
+}
+void PlayState::menosVida() {
+	cout << " Perdiste una vida";
+	vidas--;
+}
+int PlayState::getVidas() {
+	return vidas;
+}
+bool PlayState::collides(const SDL_Rect destRect, Vector2D &collVector, const Vector2D &vel) {
+	return false;
+}
