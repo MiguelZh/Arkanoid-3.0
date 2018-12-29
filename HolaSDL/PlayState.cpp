@@ -2,11 +2,26 @@
 #include"SDLApplication.h"
 PlayState::PlayState(SDLApplication* app) : GameState(app) {
 	//pauseButton = new MenuButton(app, app->getTexture(1), 0, 0, 50, 50, onHitPauseButton);
+	mapa = new BlocksMap(winWidth, winHeight, app->getTexture(8));
+	mapa->LeerFichero(niveles[0], false);
+	bola = new Ball(20, 20, Vector2D(400, 500), app->getTexture(4), velocidad, this);
+	paddle = new Paddle(75, 15, Vector2D(270, 550), app->getTexture(5), velocidad);
+	wallTop = new Wall(winWidth + 30, 15, Vector2D(-15, 0), app->getTexture(7), "Top");
+	wallDer = new Wall(15, winHeight, Vector2D(winWidth - 15, 0), app->getTexture(6), "Right");
+	wallIzq = new Wall(15, winHeight, Vector2D(0, 0), app->getTexture(6), "Left");
+	rellenaVector();
+	cout << " correcto";
 }
 PlayState::~PlayState() {
 
 }
 void PlayState::render() {
+	/*for (list<GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end();) {
+		(*it++)->render();
+	}*/
+	for (auto object : gameObjects) {
+		object->render();
+	}
 	GameState::render();
 }
 void PlayState::update() {
@@ -21,11 +36,12 @@ bool PlayState:: handleEvent(SDL_Event& event){
 	return true;
 }
 void PlayState::rellenaVector() {
-	objects.push_back(paddle);
-	objects.push_back(bola);
-	objects.push_back(wallTop);
-	objects.push_back(wallDer);
-	objects.push_back(wallIzq);
+	gameObjects.push_back(mapa);
+	gameObjects.push_back(paddle);
+	gameObjects.push_back(bola);
+	gameObjects.push_back(wallTop);
+	gameObjects.push_back(wallDer);
+	gameObjects.push_back(wallIzq);
 }
 
 void PlayState::masVida() {
@@ -59,7 +75,7 @@ Paddle* PlayState::getPaddle() {
 void PlayState::spawnReward(Vector2D coord) {
 	srand(time(NULL));
 	int type = rand() % 4;
-	reward = new Reward(50, 30, coord, textures[rewardText], Vector2D(0, 2), type, this);
+	reward = new Reward(50, 30, coord, app->getTexture(9), Vector2D(0, 2), type, this);
 	rewards.push_back(reward);
 }
 void PlayState::rewardMasNivel() {
@@ -67,7 +83,7 @@ void PlayState::rewardMasNivel() {
 		uint width = mapa->getW();
 		uint height = mapa->getH();
 		delete mapa;
-		mapa = new BlocksMap(width, height, textures[blocksMapText]);
+		mapa = new BlocksMap(width, height,app->getTexture(8));
 		mapa->LeerFichero(niveles[nivelActual], false);
 		nivelActual++;
 	}

@@ -12,5 +12,6 @@ public:
 	void update();
 	void resetBall();
 	void nuevoNv();
+	bool handleEvents(SDL_Event& event);
 };
 

@@ -4,7 +4,7 @@ Paddle::~Paddle()
 {
 	textura = nullptr;
 }
-bool Paddle::handleEvent(SDL_Event &E) {
+bool Paddle::handleEvents(SDL_Event &E) {
 	bool handled = false;
 	if (E.type == SDL_KEYDOWN) {
 		switch (E.key.keysym.sym)

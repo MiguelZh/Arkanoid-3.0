@@ -29,3 +29,6 @@ void Ball::resetBall() {
 void Ball::nuevoNv() {
 	coord = { 390,450 };
 }
+bool Ball::handleEvents(SDL_Event& event) {
+	return false;
+}

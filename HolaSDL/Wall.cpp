@@ -1,8 +1,8 @@
 #include "Wall.h"
 
-
-
-
+bool Wall::handleEvents(SDL_Event& event) {
+	return false;
+}
 
 Wall::~Wall()
 {

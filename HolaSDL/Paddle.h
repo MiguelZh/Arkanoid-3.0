@@ -10,7 +10,7 @@ public:
 	}
 	~Paddle();
 	void modificaPos(int num, bool dir);
-	bool handleEvent(SDL_Event &E);
+	bool handleEvents(SDL_Event &E);
 	bool collides(const SDL_Rect destRect, Vector2D &collVector);
 	Vector2D ballhitPaddle(const SDL_Rect * ballrect);
 };

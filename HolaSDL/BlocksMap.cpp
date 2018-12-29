@@ -54,7 +54,7 @@ void BlocksMap::LeerFichero(string filename, bool load) {
 	lectura.close();
 }
 
-void BlocksMap::render() const {
+void BlocksMap::render(){
 	for (int i = 0; i < fila; i++) {
 		for (int j = 0; j < columna; j++) {
 			if (blocks[j][i] != nullptr) {

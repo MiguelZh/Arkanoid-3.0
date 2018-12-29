@@ -13,7 +13,7 @@ public:
 		ArkanoidObject(w, h, { 0,0 }, t) {}
 	~BlocksMap();
 	void LeerFichero(string filename, bool load);
-	void render() const;
+	void render();
 	bool handleEvents(SDL_Event& event);
 	bool detectCollision(const SDL_Rect destRect, Vector2D &collVector, const Vector2D &vel, PlayState * p);
 	Block* BlocksMap::collides(const SDL_Rect& ballRect, const Vector2D& ballVel, Vector2D& collVector);

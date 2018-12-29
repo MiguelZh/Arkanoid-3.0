@@ -50,5 +50,5 @@ public:
 	vector <Reward*> rewards;
 	//blocksmap
 	uint nivelActual = 0;
-
+	string niveles[3] = { "..//maps//level01.ark","..//maps//level02.ark","..//maps//level03.ark" };
 };

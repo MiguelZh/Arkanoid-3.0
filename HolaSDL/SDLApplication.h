@@ -7,17 +7,20 @@
 #include "Texture.h"
 using namespace std;
 
+const int NUM_TEXTURES = 10; // SI AÑADES TEXTURAS AUMENTA ESTE NUMERO
+const uint winWidth = 800;
+const uint winHeight = 600;
 typedef unsigned int uint;
 class SDLApplication {
 private:
-	const int NUM_TEXTURES = 4; // SI AÑADES TEXTURAS AUMENTA ESTE NUMERO
+
 	const enum textureName {menu,play,pause,end};
-	string nombreMenus[4] = { "..\\images\\menu.png", "..\\images\\play.png", "..\\images\\pause.png","..\\images\\end.png", }; // nombre de las imagenes
+	string nombreMenus[NUM_TEXTURES] = { "..\\images\\menu.png", "..\\images\\play.png", "..\\images\\pause.png","..\\images\\end.png",
+	"..\\images\\ball.png", "..\\images\\paddle.png", "..\\images\\side.png","..\\images\\topside.png","..\\images\\bricks.png", "..\\images\\rewards.png" }; // nombre de las imagenes
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
-	Texture * textures[4];
-	const uint winWidth = 800;
-	const uint winHeight = 600;
+	Texture * textures[NUM_TEXTURES];
+
 	bool exit = false;
 	GameStateMachine * stateMachine = nullptr;
 public:
