@@ -3,7 +3,7 @@
 Block::~Block()
 {
 }
-void Block::render() const { // solo lee no cambia nada
+void Block::render() { // solo lee no cambia nada
 	SDL_Rect destRect;
 	destRect.x = coord.getX();
 	destRect.y = coord.getY();

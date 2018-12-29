@@ -2,18 +2,36 @@
 #include"SDLApplication.h"
 PlayState::PlayState(SDLApplication* app) : GameState(app) {
 	//pauseButton = new MenuButton(app, app->getTexture(1), 0, 0, 50, 50, onHitPauseButton);
-	mapa = new BlocksMap(winWidth, winHeight, app->getTexture(8));
-	mapa->LeerFichero(niveles[0], false);
+	
 	bola = new Ball(20, 20, Vector2D(400, 500), app->getTexture(4), velocidad, this);
 	paddle = new Paddle(75, 15, Vector2D(270, 550), app->getTexture(5), velocidad);
 	wallTop = new Wall(winWidth + 30, 15, Vector2D(-15, 0), app->getTexture(7), "Top");
 	wallDer = new Wall(15, winHeight, Vector2D(winWidth - 15, 0), app->getTexture(6), "Right");
 	wallIzq = new Wall(15, winHeight, Vector2D(0, 0), app->getTexture(6), "Left");
+	mapa = new BlocksMap(winWidth, winHeight, app->getTexture(8));
+	mapa->LeerFichero(niveles[0], false);
 	rellenaVector();
 	cout << " correcto";
 }
 PlayState::~PlayState() {
 
+}
+void PlayState::render() {
+	for (int i = 0; i < rewards.size(); i++) {
+		rewards[i]->render();
+	}
+	GameState::render();
+}
+void PlayState::update() {
+	GameState::update();
+	for (int i = 0; i < rewards.size(); i++) {
+		rewards[i]->update();
+	}
+	if (mapa->pasoNivel() && nivelActual <= 2) {
+		mapa->LeerFichero(niveles[nivelActual], false);
+		bola->nuevoNv();
+		nivelActual++;
+	}
 }
 bool PlayState:: handleEvent(SDL_Event& event){
 	GameState::handleEvent(event);
@@ -70,6 +88,7 @@ void PlayState::spawnReward(Vector2D coord) {
 	int type = rand() % 4;
 	reward = new Reward(50, 30, coord, app->getTexture(9), Vector2D(0, 2), type, this);
 	rewards.push_back(reward);
+	cout << " reward creado";
 }
 void PlayState::rewardMasNivel() {
 	if (nivelActual < 3) {

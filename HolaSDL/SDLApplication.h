@@ -10,6 +10,7 @@ using namespace std;
 const int NUM_TEXTURES = 10; // SI AÑADES TEXTURAS AUMENTA ESTE NUMERO
 const uint winWidth = 800;
 const uint winHeight = 600;
+const uint FRAME_RATE = 10;
 typedef unsigned int uint;
 class SDLApplication {
 private:

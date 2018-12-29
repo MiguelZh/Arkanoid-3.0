@@ -29,9 +29,13 @@ SDLApplication::SDLApplication() {
 }
 void SDLApplication::run() {
 	while (!exit) {
+		uint start = SDL_GetTicks();
 		handleEvents();
 		update();
 		render();
+		uint frameTime = SDL_GetTicks() - start;
+		if (frameTime < FRAME_RATE)
+			SDL_Delay(FRAME_RATE - frameTime);
 	}
 }
 void SDLApplication::handleEvents() {

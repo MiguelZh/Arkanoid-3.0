@@ -9,7 +9,7 @@ public:
 	Block(uint color, uint ancho, uint alto, Vector2D coord, Texture * textura, uint row, uint col) :
 		color(color), ArkanoidObject(ancho, alto, coord, textura), row(row), col(col) {}
 	~Block();
-	void render() const;
+	void render();
 	uint getRow() { return row; }
 	uint getCol() { return col; }
 	uint getColor() { return color; }

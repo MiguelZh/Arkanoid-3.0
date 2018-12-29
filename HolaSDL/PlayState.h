@@ -24,6 +24,8 @@ protected:
 public:
 	PlayState(SDLApplication * app);
 	~PlayState();
+	void render();
+	void update();
 	bool handleEvent(SDL_Event& event);
 	//vector objetos
 	vector <ArkanoidObject*> objects;
