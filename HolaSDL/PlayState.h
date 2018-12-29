@@ -21,13 +21,9 @@ private:
 	BlocksMap * mapa = nullptr;
 	Wall * wallTop = nullptr, *wallDer = nullptr, *wallIzq = nullptr;
 protected:
-	list<GameObject*> gameObjects;
-	MenuButton * pauseButton;
 public:
 	PlayState(SDLApplication * app);
 	~PlayState();
-	void update();
-	void render();
 	bool handleEvent(SDL_Event& event);
 	//vector objetos
 	vector <ArkanoidObject*> objects;

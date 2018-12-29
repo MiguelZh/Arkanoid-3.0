@@ -15,24 +15,12 @@ PlayState::PlayState(SDLApplication* app) : GameState(app) {
 PlayState::~PlayState() {
 
 }
-void PlayState::render() {
-	/*for (list<GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end();) {
-		(*it++)->render();
-	}*/
-	for (auto object : gameObjects) {
-		object->render();
-	}
-	GameState::render();
-}
-void PlayState::update() {
-	GameState::update();
-}
 bool PlayState:: handleEvent(SDL_Event& event){
+	GameState::handleEvent(event);
 	if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) {
 		app->getStateMachine()->pushState(new PauseState(app));
 		cout << " pause";
 	}
-	else { GameState::handleEvent(event); }
 	return true;
 }
 void PlayState::rellenaVector() {
@@ -56,6 +44,11 @@ int PlayState::getVidas() {
 	return vidas;
 }
 bool PlayState::collides(const SDL_Rect destRect, Vector2D &collVector, const Vector2D &vel) {
+	if (mapa->detectCollision(destRect, collVector, vel, this)) return true;
+	if (wallDer->collides(destRect, collVector)) return true;
+	if (wallIzq->collides(destRect, collVector)) return true;
+	if (wallTop->collides(destRect, collVector)) return true;
+	if (paddle->collides(destRect, collVector)) return true;
 	return false;
 }
 void PlayState::reset() {
