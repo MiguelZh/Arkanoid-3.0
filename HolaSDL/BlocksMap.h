@@ -24,5 +24,6 @@ public:
 	int bloqueConcreto(int row, int col);
 	uint getFilas() { return fila; }
 	uint getColumnas() { return columna; }
+	void saveToFile(ofstream& file);
 };
 

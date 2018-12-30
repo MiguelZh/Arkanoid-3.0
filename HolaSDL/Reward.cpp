@@ -2,6 +2,9 @@
 #include "PlayState.h"
 Reward::~Reward()
 {
+	playstate = nullptr;
+	paddle = nullptr;
+	bola = nullptr;
 }
 void Reward::render() {
 	if (SDL_GetTicks() > velocidadAnim + tiempo) {

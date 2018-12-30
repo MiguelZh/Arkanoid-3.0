@@ -5,10 +5,12 @@
 class MainMenuState: public GameState {
 protected:
 	MenuButton * playButton;
+	MenuButton * loadButton;
 public:
 	MainMenuState(SDLApplication * app);
 	~MainMenuState();
 	static void onHitPlayButton(SDLApplication * app);
+	static void onHitLoadButton(SDLApplication * app);
 	void update();
-	void handleEvents(SDL_Event  Event);
+	bool handleEvent(SDL_Event& event);
 };

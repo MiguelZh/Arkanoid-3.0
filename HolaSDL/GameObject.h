@@ -8,7 +8,7 @@ typedef unsigned int uint;
 class GameObject {
 public:
 	GameObject();
-	~GameObject();
+	virtual ~GameObject();
 	virtual void render() = 0;
 	virtual void update() = 0;
 	virtual bool handleEvents(SDL_Event& event) = 0;

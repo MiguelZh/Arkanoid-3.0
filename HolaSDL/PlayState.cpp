@@ -13,8 +13,36 @@ PlayState::PlayState(SDLApplication* app) : GameState(app) {
 	rellenaVector();
 	cout << " correcto";
 }
+PlayState::PlayState(SDLApplication* app, string filename) : GameState(app) {
+	ifstream file;
+	file.open("..\\saves\\" + filename + ".txt");
+	mapa = new BlocksMap(winWidth, winHeight, app->getTexture(8));
+	mapa->LeerFichero("..\\saves\\" + filename + ".txt", true);
+	int a, b;
+	file >> a; file >> b;
+	velocidad = { (double)a ,(double)b };
+	file >> a; file >> b;
+	int c, d; file >> c; file >> d;
+	paddle = new Paddle(c, d, { (double)a,(double)b }, app->getTexture(5), velocidad);
+	file >> a; file >> b;
+	velocidad = { (double)a ,(double)b };
+	file >> a; file >> b;
+	file >> c; file >> d;
+	bola = new Ball(c, d, { (double)a,(double)b }, app->getTexture(4), { 1,1 }, this);
+	file >> a; file >> b; file >> c; file >> d;
+	wallTop = new Wall(c, d, { (double)a,(double)b }, app->getTexture(7), "Top");
+	file >> a; file >> b; file >> c; file >> d;
+	wallDer = new Wall(c, d, { (double)a,(double)b }, app->getTexture(6), "Right");
+	file >> a; file >> b; file >> c; file >> d;
+	wallIzq = new Wall(c, d, { (double)a,(double)b }, app->getTexture(6), "Left");
+	nivelActual++;
+	rellenaVector();
+}
 PlayState::~PlayState() {
-
+	delete wallTop; delete wallDer; delete wallIzq;
+	delete paddle;
+	delete bola;
+	delete mapa;
 }
 void PlayState::render() {
 	for (int i = 0; i < rewards.size(); i++) {
@@ -35,19 +63,24 @@ void PlayState::update() {
 }
 bool PlayState:: handleEvent(SDL_Event& event){
 	GameState::handleEvent(event);
-	if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) {
-		app->getStateMachine()->pushState(new PauseState(app));
-		cout << " pause";
+	if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) {
+		if (event.key.keysym.sym == SDLK_ESCAPE) {
+			app->getStateMachine()->pushState(new PauseState(app));
+			cout << " pause";
+		}
+		if (event.key.keysym.sym == SDLK_s) {
+			saveGame();
+		}
 	}
 	return true;
 }
-void PlayState::rellenaVector() {
-	gameObjects.push_back(mapa);
+void PlayState::rellenaVector() {	
 	gameObjects.push_back(paddle);
 	gameObjects.push_back(bola);
 	gameObjects.push_back(wallTop);
 	gameObjects.push_back(wallDer);
 	gameObjects.push_back(wallIzq);
+	gameObjects.push_back(mapa);
 }
 
 void PlayState::masVida() {
@@ -105,4 +138,18 @@ void PlayState::destruyeReward() {
 	rewards.pop_back();
 	delete reward;
 	reward = nullptr;
+}
+void PlayState::saveGame() {
+	system("cls");
+	cout << "Escribe el nombre del archivo: " << endl;
+	string nombre;
+	cin >> nombre;
+	string filename = "..\\saves\\" + nombre + ".txt";
+	ofstream file(filename, ofstream::trunc); // borra todo lo que ya este guardado, si existe un archivo igual
+	// tamaño paddle, bola,walltop,wallder,wallizq,mapa
+	for (auto *n : gameObjects) {
+		ArkanoidObject * object = static_cast<ArkanoidObject*>(n);
+		object->saveToFile(file);
+	}
+	file.close();
 }

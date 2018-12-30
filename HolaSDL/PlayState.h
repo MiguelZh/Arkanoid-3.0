@@ -23,12 +23,12 @@ private:
 protected:
 public:
 	PlayState(SDLApplication * app);
+	PlayState(SDLApplication * app, string filename);
 	~PlayState();
 	void render();
 	void update();
 	bool handleEvent(SDL_Event& event);
 	//vector objetos
-	vector <ArkanoidObject*> objects;
 	void rellenaVector();
 	//metodos de ball
 	int vidas = 3;
@@ -49,4 +49,6 @@ public:
 	//blocksmap
 	uint nivelActual = 0;
 	string niveles[3] = { "..//maps//level01.ark","..//maps//level02.ark","..//maps//level03.ark" };
+	//saveGame
+	void saveGame();
 };

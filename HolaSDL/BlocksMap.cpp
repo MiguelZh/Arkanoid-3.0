@@ -174,8 +174,7 @@ void BlocksMap::ballHitBlock(Block * bloque) {
 void BlocksMap::puntuacion() {
 
 	if (puntos != puntosAnt) {
-		system("cls");
-		cout << "Puntuacion: " << puntos;
+		cout << " Puntuacion: " << puntos;
 		puntosAnt = puntos;
 	}
 
@@ -193,4 +192,16 @@ int BlocksMap::bloqueConcreto(int row, int col) {
 		return blocks[row][col]->getColor();
 	}
 	else return 0;
+}
+void BlocksMap::saveToFile(ofstream& file) {
+	file << fila << " " << columna << " " << endl;
+	for (int x = 0; x < fila; x++) {
+		for (int y = 0; y < columna; y++) {
+			if (blocks[y][x] != nullptr) {
+				file << blocks[y][x]->getColor() << " ";
+			}
+			else file << "0"<< " ";
+		}
+		file << endl;
+	}
 }
