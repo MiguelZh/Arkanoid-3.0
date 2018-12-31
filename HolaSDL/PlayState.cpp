@@ -60,6 +60,9 @@ void PlayState::update() {
 		bola->nuevoNv();
 		nivelActual++;
 	}
+	if (vidas <= 0) {
+		app->getStateMachine()->pushState(new EndState(app));
+	}
 }
 bool PlayState:: handleEvent(SDL_Event& event){
 	GameState::handleEvent(event);

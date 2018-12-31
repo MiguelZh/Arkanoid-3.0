@@ -3,6 +3,7 @@
 #include <list>
 #include "MenuButton.h"
 #include "PauseState.h"
+#include "EndState.h"
 #include "Ball.h"
 #include "Paddle.h"
 #include "Reward.h"
