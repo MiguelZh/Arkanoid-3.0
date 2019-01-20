@@ -48,6 +48,7 @@ void PlayState::render() {
 	for (int i = 0; i < rewards.size(); i++) {
 		rewards[i]->render();
 	}
+	mapa->render();
 	GameState::render();
 }
 void PlayState::update() {
