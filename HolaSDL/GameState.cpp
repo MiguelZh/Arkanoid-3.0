@@ -1,7 +1,10 @@
 #include "GameState.h"
 
 GameState::~GameState() {
-	
+	for (auto object : gameObjects)
+	{
+		delete object;
+	}
 }
 
 void GameState::render() {

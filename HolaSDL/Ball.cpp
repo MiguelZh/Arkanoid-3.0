@@ -3,6 +3,7 @@
 Ball::~Ball()
 {
 	textura = nullptr;
+	playstate = nullptr;
 }
 void Ball::update() {
 	Vector2D prevPos = coord;

@@ -10,7 +10,7 @@ protected:
 	GameState * currentState = nullptr;
 public:
 	GameStateMachine(){}
-	~GameStateMachine() { currentState = nullptr; }
+	~GameStateMachine();
 	void pushState(GameState* state);
 	void changeState(GameState* state);
 	void popState();

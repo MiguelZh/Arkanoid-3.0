@@ -1,6 +1,13 @@
 #include "GameStateMachine.h"
 
-
+GameStateMachine::~GameStateMachine() {
+	 currentState = nullptr; 
+	 while (!stateStack.empty())
+	 {
+		 delete stateStack.top();
+		 stateStack.pop();
+	 }
+}
 void GameStateMachine::pushState(GameState* state) {
 	stateStack.push(state);// error de lectura
 	currentState = stateStack.top();
