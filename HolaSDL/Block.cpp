@@ -21,6 +21,7 @@ void Block::render() { // solo lee no cambia nada
 	if (color != 0) {
 		if (textura != nullptr) {
 			textura->renderFrame(destRect, row, col, 0, SDL_FLIP_NONE);
+			//renderFrame(row, col); hace lo mismo, no funciona igualmente
 		}
 	}
 	//void renderFrame(const SDL_Rect& destRect, int row, int col, int angle = 0, SDL_RendererFlip flip = SDL_FLIP_NONE) const;
