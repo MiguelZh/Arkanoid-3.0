@@ -10,7 +10,7 @@ MainMenuState::~MainMenuState() {
 }
 void MainMenuState::onHitPlayButton(SDLApplication * app) {
 	cout << " playState";
-	app->getStateMachine()->pushState(new PlayState(app));
+	app->getStateMachine()->changeState(new PlayState(app));
 }
 void MainMenuState::update() {
 

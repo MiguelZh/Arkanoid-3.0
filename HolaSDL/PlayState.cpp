@@ -15,7 +15,6 @@ void PlayState::update() {
 bool PlayState:: handleEvent(SDL_Event& event){
 	if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) {
 		app->getStateMachine()->pushState(new PauseState(app));
-		cout << " pause";
 	}
 	else { GameState::handleEvent(event); }
 	return true;

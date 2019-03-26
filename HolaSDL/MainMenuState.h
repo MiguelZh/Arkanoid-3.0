@@ -7,7 +7,7 @@ protected:
 	MenuButton * playButton;
 public:
 	MainMenuState(SDLApplication * app);
-	~MainMenuState();
+	virtual ~MainMenuState();
 	static void onHitPlayButton(SDLApplication * app);
 	void update();
 	void handleEvents(SDL_Event  Event);

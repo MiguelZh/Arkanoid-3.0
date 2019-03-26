@@ -22,7 +22,7 @@ private:
 	GameStateMachine * stateMachine = nullptr;
 public:
 	SDLApplication();
-	~SDLApplication();
+	virtual ~SDLApplication();
 	void run();
 	void render() const;
 	void handleEvents();

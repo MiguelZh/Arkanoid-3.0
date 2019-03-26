@@ -17,12 +17,10 @@ PauseState::~PauseState()
 }
 
 void PauseState::HitPlayButton(SDLApplication * app) {
-	cout << " playState";	
 	app->getStateMachine()->popState();
 }
 void PauseState::HitMenuButton(SDLApplication * app) {
-	cout << " menuState";
-	app->getStateMachine()->pushState(new MainMenuState(app));
+	app->getStateMachine()->changeState(new MainMenuState(app));
 }
 bool PauseState::handleEvent(SDL_Event& event) {
 	bool handled = false;
